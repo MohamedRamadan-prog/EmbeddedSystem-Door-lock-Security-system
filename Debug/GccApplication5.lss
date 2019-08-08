@@ -1,0 +1,1661 @@
+
+GccApplication5.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007e0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000009a  00800060  000007e0  00000874  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000014  008000fa  008000fa  0000090e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000090e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000940  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000130  00000000  00000000  0000097c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000153b  00000000  00000000  00000aac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a64  00000000  00000000  00001fe7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b2f  00000000  00000000  00002a4b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000250  00000000  00000000  0000357c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005a7  00000000  00000000  000037cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000a8e  00000000  00000000  00003d73  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000b8  00000000  00000000  00004801  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 d2 03 	jmp	0x7a4	; 0x7a4 <__vector_1>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 ee       	ldi	r30, 0xE0	; 224
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 3f       	cpi	r26, 0xFA	; 250
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	aa ef       	ldi	r26, 0xFA	; 250
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 30       	cpi	r26, 0x0E	; 14
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 1d 03 	call	0x63a	; 0x63a <main>
+  8a:	0c 94 ee 03 	jmp	0x7dc	; 0x7dc <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <EEPROM_write>:
+
+
+void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
+{
+/* Wait for completion of previous write */
+while(EECR & (1<<EEWE));
+  92:	e1 99       	sbic	0x1c, 1	; 28
+  94:	fe cf       	rjmp	.-4      	; 0x92 <EEPROM_write>
+
+/* Set up address and data registers */
+EEAR = uiAddress;
+  96:	9f bb       	out	0x1f, r25	; 31
+  98:	8e bb       	out	0x1e, r24	; 30
+EEDR = ucData;
+  9a:	6d bb       	out	0x1d, r22	; 29
+/* Write logical one to EEMWE */
+EECR |= (1<<EEMWE);
+  9c:	e2 9a       	sbi	0x1c, 2	; 28
+/* Start eeprom write by setting EEWE */
+EECR |= (1<<EEWE);
+  9e:	e1 9a       	sbi	0x1c, 1	; 28
+  a0:	08 95       	ret
+
+000000a2 <EEPROM_read>:
+}
+
+unsigned char EEPROM_read(unsigned int uiAddress)
+{
+/* Wait for completion of previous write */
+while(EECR & (1<<EEWE));
+  a2:	e1 99       	sbic	0x1c, 1	; 28
+  a4:	fe cf       	rjmp	.-4      	; 0xa2 <EEPROM_read>
+/* Set up address register */
+EEAR = uiAddress;
+  a6:	9f bb       	out	0x1f, r25	; 31
+  a8:	8e bb       	out	0x1e, r24	; 30
+/* Start eeprom read by writing EERE */
+EECR |= (1<<EERE);
+  aa:	e0 9a       	sbi	0x1c, 0	; 28
+/* Return data from data register */
+return EEDR;
+  ac:	8d b3       	in	r24, 0x1d	; 29
+}
+  ae:	08 95       	ret
+
+000000b0 <GPIO_Init>:
+
+static uint8_t GPIO_GroupState[GPIO_GROUPS_NUMBER] = {0};
+
+/*A function to initialize all the GPIO Groups in the configurations*/
+GPIO_CheckType GPIO_Init(void)
+{
+  b0:	ef 92       	push	r14
+  b2:	ff 92       	push	r15
+  b4:	1f 93       	push	r17
+  b6:	cf 93       	push	r28
+  b8:	df 93       	push	r29
+  ba:	a4 e6       	ldi	r26, 0x64	; 100
+  bc:	b0 e0       	ldi	r27, 0x00	; 0
+  be:	0f 2e       	mov	r0, r31
+  c0:	fa ef       	ldi	r31, 0xFA	; 250
+  c2:	ef 2e       	mov	r14, r31
+  c4:	f0 e0       	ldi	r31, 0x00	; 0
+  c6:	ff 2e       	mov	r15, r31
+  c8:	f0 2d       	mov	r31, r0
+  ca:	28 ea       	ldi	r18, 0xA8	; 168
+  cc:	30 e0       	ldi	r19, 0x00	; 0
+			/*Data Control*/
+			GPIODIR_REG(CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortDirection);
+			/*Pad Control*/
+			//GPIODATA_WRITE(0x00,CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortWrite);
+			GPIODATA_READ(CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortDirection & CfgPtr->PortWrite);
+			GPIO_GroupState[LoopIndex] = 1;
+  ce:	11 e0       	ldi	r17, 0x01	; 1
+	const GPIO_CfgType * CfgPtr;
+
+
+	for(LoopIndex = 0; (LoopIndex < GPIO_GROUPS_NUMBER) && (ErrorFlag == 0); LoopIndex ++)
+	{
+		if(GPIO_ConfigParam[LoopIndex].PortId < PORTS_NUMBER)
+  d0:	ec 91       	ld	r30, X
+  d2:	e4 30       	cpi	r30, 0x04	; 4
+  d4:	10 f5       	brcc	.+68     	; 0x11a <GPIO_Init+0x6a>
+        {
+           /*Enable port clock gate*/
+            CfgPtr = & GPIO_ConfigParam[LoopIndex];
+			/*Data Control*/
+			GPIODIR_REG(CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortDirection);
+  d6:	f0 e0       	ldi	r31, 0x00	; 0
+  d8:	e0 5a       	subi	r30, 0xA0	; 160
+  da:	ff 4f       	sbci	r31, 0xFF	; 255
+  dc:	e0 81       	ld	r30, Z
+  de:	f0 e0       	ldi	r31, 0x00	; 0
+  e0:	af 01       	movw	r20, r30
+  e2:	ea 01       	movw	r28, r20
+  e4:	6a 91       	ld	r22, -Y
+  e6:	12 96       	adiw	r26, 0x02	; 2
+  e8:	7c 91       	ld	r23, X
+  ea:	12 97       	sbiw	r26, 0x02	; 2
+  ec:	11 96       	adiw	r26, 0x01	; 1
+  ee:	9c 91       	ld	r25, X
+  f0:	11 97       	sbiw	r26, 0x01	; 1
+  f2:	97 23       	and	r25, r23
+  f4:	96 2b       	or	r25, r22
+  f6:	98 83       	st	Y, r25
+			/*Pad Control*/
+			//GPIODATA_WRITE(0x00,CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortWrite);
+			GPIODATA_READ(CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortDirection & CfgPtr->PortWrite);
+  f8:	32 97       	sbiw	r30, 0x02	; 2
+  fa:	90 81       	ld	r25, Z
+  fc:	13 96       	adiw	r26, 0x03	; 3
+  fe:	8c 91       	ld	r24, X
+ 100:	13 97       	sbiw	r26, 0x03	; 3
+ 102:	87 23       	and	r24, r23
+ 104:	89 2b       	or	r24, r25
+ 106:	80 83       	st	Z, r24
+			GPIO_GroupState[LoopIndex] = 1;
+ 108:	f7 01       	movw	r30, r14
+ 10a:	11 93       	st	Z+, r17
+ 10c:	7f 01       	movw	r14, r30
+ 10e:	14 96       	adiw	r26, 0x04	; 4
+	uint8_t ErrorFlag = 0;
+	GPIO_CheckType RetVar;
+	const GPIO_CfgType * CfgPtr;
+
+
+	for(LoopIndex = 0; (LoopIndex < GPIO_GROUPS_NUMBER) && (ErrorFlag == 0); LoopIndex ++)
+ 110:	a2 17       	cp	r26, r18
+ 112:	b3 07       	cpc	r27, r19
+ 114:	e9 f6       	brne	.-70     	; 0xd0 <GPIO_Init+0x20>
+			GPIODIR_REG(CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortDirection);
+			/*Pad Control*/
+			//GPIODATA_WRITE(0x00,CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortWrite);
+			GPIODATA_READ(CfgPtr->PortMask,CfgPtr->PortId) |= (CfgPtr->PortDirection & CfgPtr->PortWrite);
+			GPIO_GroupState[LoopIndex] = 1;
+			RetVar = GPIO_OK;
+ 116:	80 e0       	ldi	r24, 0x00	; 0
+ 118:	01 c0       	rjmp	.+2      	; 0x11c <GPIO_Init+0x6c>
+        }
+		else
+		{
+			/*Invalid GroupId*/
+			RetVar = GPIO_NOK;
+ 11a:	81 e0       	ldi	r24, 0x01	; 1
+		}
+
+
+	}
+	return RetVar;
+}
+ 11c:	df 91       	pop	r29
+ 11e:	cf 91       	pop	r28
+ 120:	1f 91       	pop	r17
+ 122:	ff 90       	pop	r15
+ 124:	ef 90       	pop	r14
+ 126:	08 95       	ret
+
+00000128 <GPIO_Write>:
+GPIO_CheckType GPIO_Write(uint8_t GroupId,uint8_t GroupData)
+{
+	const GPIO_CfgType * CfgWrite;
+	GPIO_CheckType ReturnVar;
+
+	if (( GroupId <GPIO_GROUPS_NUMBER))
+ 128:	81 31       	cpi	r24, 0x11	; 17
+ 12a:	e0 f5       	brcc	.+120    	; 0x1a4 <GPIO_Write+0x7c>
+	{
+
+		CfgWrite =  & GPIO_ConfigParam[GroupId];
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+
+		if ((CfgWrite->PortDirection == 0xff)&&(GPIO_GroupState[GroupId]==1 ))
+ 12e:	fc 01       	movw	r30, r24
+ 130:	ee 0f       	add	r30, r30
+ 132:	ff 1f       	adc	r31, r31
+ 134:	ee 0f       	add	r30, r30
+ 136:	ff 1f       	adc	r31, r31
+ 138:	ec 59       	subi	r30, 0x9C	; 156
+ 13a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 13c:	22 81       	ldd	r18, Z+2	; 0x02
+ 13e:	2f 3f       	cpi	r18, 0xFF	; 255
+ 140:	99 f5       	brne	.+102    	; 0x1a8 <GPIO_Write+0x80>
+ 142:	fc 01       	movw	r30, r24
+ 144:	e6 50       	subi	r30, 0x06	; 6
+ 146:	ff 4f       	sbci	r31, 0xFF	; 255
+ 148:	20 81       	ld	r18, Z
+ 14a:	21 30       	cpi	r18, 0x01	; 1
+ 14c:	79 f5       	brne	.+94     	; 0x1ac <GPIO_Write+0x84>
+		{
+		    if(GroupData == 0x00)
+ 14e:	61 11       	cpse	r22, r1
+ 150:	14 c0       	rjmp	.+40     	; 0x17a <GPIO_Write+0x52>
+            {
+                GPIODATA_WRITE(GroupData,CfgWrite->PortMask,CfgWrite->PortId) &= ~(CfgWrite->PortMask);
+ 152:	88 0f       	add	r24, r24
+ 154:	99 1f       	adc	r25, r25
+ 156:	88 0f       	add	r24, r24
+ 158:	99 1f       	adc	r25, r25
+ 15a:	fc 01       	movw	r30, r24
+ 15c:	ec 59       	subi	r30, 0x9C	; 156
+ 15e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 160:	a0 81       	ld	r26, Z
+ 162:	b0 e0       	ldi	r27, 0x00	; 0
+ 164:	a0 5a       	subi	r26, 0xA0	; 160
+ 166:	bf 4f       	sbci	r27, 0xFF	; 255
+ 168:	ac 91       	ld	r26, X
+ 16a:	b0 e0       	ldi	r27, 0x00	; 0
+ 16c:	9c 91       	ld	r25, X
+ 16e:	81 81       	ldd	r24, Z+1	; 0x01
+ 170:	80 95       	com	r24
+ 172:	89 23       	and	r24, r25
+ 174:	8c 93       	st	X, r24
+ 176:	80 e0       	ldi	r24, 0x00	; 0
+ 178:	08 95       	ret
+		        ReturnVar = GPIO_OK;
+            }
+            if(GroupData == 0xff)
+ 17a:	6f 3f       	cpi	r22, 0xFF	; 255
+ 17c:	c9 f4       	brne	.+50     	; 0x1b0 <GPIO_Write+0x88>
+            {
+                GPIODATA_WRITE(GroupData,CfgWrite->PortMask,CfgWrite->PortId) |= (CfgWrite->PortMask);
+ 17e:	88 0f       	add	r24, r24
+ 180:	99 1f       	adc	r25, r25
+ 182:	88 0f       	add	r24, r24
+ 184:	99 1f       	adc	r25, r25
+ 186:	fc 01       	movw	r30, r24
+ 188:	ec 59       	subi	r30, 0x9C	; 156
+ 18a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 18c:	a0 81       	ld	r26, Z
+ 18e:	b0 e0       	ldi	r27, 0x00	; 0
+ 190:	a0 5a       	subi	r26, 0xA0	; 160
+ 192:	bf 4f       	sbci	r27, 0xFF	; 255
+ 194:	ac 91       	ld	r26, X
+ 196:	b0 e0       	ldi	r27, 0x00	; 0
+ 198:	9c 91       	ld	r25, X
+ 19a:	81 81       	ldd	r24, Z+1	; 0x01
+ 19c:	89 2b       	or	r24, r25
+ 19e:	8c 93       	st	X, r24
+		        ReturnVar = GPIO_OK;
+ 1a0:	80 e0       	ldi	r24, 0x00	; 0
+ 1a2:	08 95       	ret
+		}
+
+	}
+	else
+	{
+		ReturnVar = GPIO_NOK ;
+ 1a4:	81 e0       	ldi	r24, 0x01	; 1
+ 1a6:	08 95       	ret
+
+	    }
+
+		else
+		{
+			ReturnVar = GPIO_NOK ;
+ 1a8:	81 e0       	ldi	r24, 0x01	; 1
+ 1aa:	08 95       	ret
+ 1ac:	81 e0       	ldi	r24, 0x01	; 1
+ 1ae:	08 95       	ret
+ 1b0:	80 e0       	ldi	r24, 0x00	; 0
+	{
+		ReturnVar = GPIO_NOK ;
+	}
+
+	return ReturnVar;
+}
+ 1b2:	08 95       	ret
+
+000001b4 <GPIO_Read>:
+GPIO_CheckType GPIO_Read(uint8_t GroupId,uint8_t* GroupDataPtr)
+{
+
+	const GPIO_CfgType * CfgRead;
+		GPIO_CheckType RetVar;
+		if (( GroupId <GPIO_GROUPS_NUMBER))
+ 1b4:	81 31       	cpi	r24, 0x11	; 17
+ 1b6:	30 f5       	brcc	.+76     	; 0x204 <GPIO_Read+0x50>
+			{
+			    CfgRead = &GPIO_ConfigParam[GroupId];
+ 1b8:	90 e0       	ldi	r25, 0x00	; 0
+				if ((CfgRead->PortDirection == 0x00)&&(GPIO_GroupState[GroupId]==1 ))
+ 1ba:	fc 01       	movw	r30, r24
+ 1bc:	ee 0f       	add	r30, r30
+ 1be:	ff 1f       	adc	r31, r31
+ 1c0:	ee 0f       	add	r30, r30
+ 1c2:	ff 1f       	adc	r31, r31
+ 1c4:	ec 59       	subi	r30, 0x9C	; 156
+ 1c6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1c8:	22 81       	ldd	r18, Z+2	; 0x02
+ 1ca:	21 11       	cpse	r18, r1
+ 1cc:	1d c0       	rjmp	.+58     	; 0x208 <GPIO_Read+0x54>
+ 1ce:	fc 01       	movw	r30, r24
+ 1d0:	e6 50       	subi	r30, 0x06	; 6
+ 1d2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d4:	20 81       	ld	r18, Z
+ 1d6:	21 30       	cpi	r18, 0x01	; 1
+ 1d8:	c9 f4       	brne	.+50     	; 0x20c <GPIO_Read+0x58>
+				{
+                   *GroupDataPtr = (GPIODATA_READ(CfgRead->PortMask,CfgRead->PortId) & (CfgRead->PortMask) );
+ 1da:	88 0f       	add	r24, r24
+ 1dc:	99 1f       	adc	r25, r25
+ 1de:	88 0f       	add	r24, r24
+ 1e0:	99 1f       	adc	r25, r25
+ 1e2:	fc 01       	movw	r30, r24
+ 1e4:	ec 59       	subi	r30, 0x9C	; 156
+ 1e6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1e8:	a0 81       	ld	r26, Z
+ 1ea:	b0 e0       	ldi	r27, 0x00	; 0
+ 1ec:	a0 5a       	subi	r26, 0xA0	; 160
+ 1ee:	bf 4f       	sbci	r27, 0xFF	; 255
+ 1f0:	ac 91       	ld	r26, X
+ 1f2:	b0 e0       	ldi	r27, 0x00	; 0
+ 1f4:	12 97       	sbiw	r26, 0x02	; 2
+ 1f6:	8c 91       	ld	r24, X
+ 1f8:	91 81       	ldd	r25, Z+1	; 0x01
+ 1fa:	89 23       	and	r24, r25
+ 1fc:	fb 01       	movw	r30, r22
+ 1fe:	80 83       	st	Z, r24
+                   RetVar = GPIO_OK;
+ 200:	80 e0       	ldi	r24, 0x00	; 0
+ 202:	08 95       	ret
+				 }
+
+			}
+			else
+			{
+				RetVar = GPIO_NOK ;
+ 204:	81 e0       	ldi	r24, 0x01	; 1
+ 206:	08 95       	ret
+                   *GroupDataPtr = (GPIODATA_READ(CfgRead->PortMask,CfgRead->PortId) & (CfgRead->PortMask) );
+                   RetVar = GPIO_OK;
+				}
+				else
+				 {
+					 RetVar = GPIO_NOK ;
+ 208:	81 e0       	ldi	r24, 0x01	; 1
+ 20a:	08 95       	ret
+ 20c:	81 e0       	ldi	r24, 0x01	; 1
+			{
+				RetVar = GPIO_NOK ;
+			}
+
+			return RetVar;
+}
+ 20e:	08 95       	ret
+
+00000210 <interrupt_Init>:
+ */
+#include "avr/interrupt.h"
+
+ void interrupt_Init()
+ { 
+	 GICR  |= 1<<INT0; 
+ 210:	8b b7       	in	r24, 0x3b	; 59
+ 212:	80 64       	ori	r24, 0x40	; 64
+ 214:	8b bf       	out	0x3b, r24	; 59
+	 MCUCR = 0xff ;
+ 216:	8f ef       	ldi	r24, 0xFF	; 255
+ 218:	85 bf       	out	0x35, r24	; 53
+ 21a:	08 95       	ret
+
+0000021c <getkey>:
+#include "GPIO_Cfg.h"
+
+unsigned char Data ; 
+
+unsigned char getkey()
+{
+ 21c:	cf 92       	push	r12
+ 21e:	df 92       	push	r13
+ 220:	ef 92       	push	r14
+ 222:	ff 92       	push	r15
+ 224:	0f 93       	push	r16
+ 226:	1f 93       	push	r17
+ 228:	cf 93       	push	r28
+	int i, j;
+	for(i = Row0; i <= Row3; i++)
+ 22a:	e1 2c       	mov	r14, r1
+ 22c:	f1 2c       	mov	r15, r1
+	{
+		GPIO_Write(Row0,0xff);
+ 22e:	6f ef       	ldi	r22, 0xFF	; 255
+ 230:	80 e0       	ldi	r24, 0x00	; 0
+ 232:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+		GPIO_Write(Row1,0xff);
+ 236:	6f ef       	ldi	r22, 0xFF	; 255
+ 238:	81 e0       	ldi	r24, 0x01	; 1
+ 23a:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+		GPIO_Write(Row2,0xff);
+ 23e:	6f ef       	ldi	r22, 0xFF	; 255
+ 240:	82 e0       	ldi	r24, 0x02	; 2
+ 242:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+		GPIO_Write(Row3,0xff);
+ 246:	6f ef       	ldi	r22, 0xFF	; 255
+ 248:	83 e0       	ldi	r24, 0x03	; 3
+ 24a:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+		
+		GPIO_Write(i,0x00);
+ 24e:	60 e0       	ldi	r22, 0x00	; 0
+ 250:	8e 2d       	mov	r24, r14
+ 252:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+ 256:	04 e0       	ldi	r16, 0x04	; 4
+ 258:	10 e0       	ldi	r17, 0x00	; 0
+ 25a:	0f 2e       	mov	r0, r31
+ 25c:	f5 e0       	ldi	r31, 0x05	; 5
+ 25e:	cf 2e       	mov	r12, r31
+ 260:	d1 2c       	mov	r13, r1
+ 262:	f0 2d       	mov	r31, r0
+ 264:	05 c0       	rjmp	.+10     	; 0x270 <getkey+0x54>
+ 266:	8f ef       	ldi	r24, 0xFF	; 255
+ 268:	c8 1a       	sub	r12, r24
+ 26a:	d8 0a       	sbc	r13, r24
+ 26c:	0f 5f       	subi	r16, 0xFF	; 255
+ 26e:	1f 4f       	sbci	r17, 0xFF	; 255
+
+		for(j = Col0 ; j <= Col3 ; j++)
+		{
+			GPIO_Read(j,&Data);
+ 270:	c0 2f       	mov	r28, r16
+ 272:	6d e0       	ldi	r22, 0x0D	; 13
+ 274:	71 e0       	ldi	r23, 0x01	; 1
+ 276:	80 2f       	mov	r24, r16
+ 278:	0e 94 da 00 	call	0x1b4	; 0x1b4 <GPIO_Read>
+			if(Data==0x00)//check if key is pressed
+ 27c:	80 91 0d 01 	lds	r24, 0x010D	; 0x80010d <Data>
+ 280:	81 11       	cpse	r24, r1
+ 282:	51 c0       	rjmp	.+162    	; 0x326 <getkey+0x10a>
+			{
+				while(Data==0x00) {GPIO_Read(j,&Data);}  //wait for key to be released
+ 284:	6d e0       	ldi	r22, 0x0D	; 13
+ 286:	71 e0       	ldi	r23, 0x01	; 1
+ 288:	8c 2f       	mov	r24, r28
+ 28a:	0e 94 da 00 	call	0x1b4	; 0x1b4 <GPIO_Read>
+ 28e:	80 91 0d 01 	lds	r24, 0x010D	; 0x80010d <Data>
+ 292:	88 23       	and	r24, r24
+ 294:	b9 f3       	breq	.-18     	; 0x284 <getkey+0x68>
+				switch(i)
+ 296:	81 e0       	ldi	r24, 0x01	; 1
+ 298:	e8 16       	cp	r14, r24
+ 29a:	f1 04       	cpc	r15, r1
+ 29c:	e9 f0       	breq	.+58     	; 0x2d8 <getkey+0xbc>
+ 29e:	24 f4       	brge	.+8      	; 0x2a8 <getkey+0x8c>
+ 2a0:	e1 14       	cp	r14, r1
+ 2a2:	f1 04       	cpc	r15, r1
+ 2a4:	51 f0       	breq	.+20     	; 0x2ba <getkey+0x9e>
+ 2a6:	3f c0       	rjmp	.+126    	; 0x326 <getkey+0x10a>
+ 2a8:	82 e0       	ldi	r24, 0x02	; 2
+ 2aa:	e8 16       	cp	r14, r24
+ 2ac:	f1 04       	cpc	r15, r1
+ 2ae:	09 f1       	breq	.+66     	; 0x2f2 <getkey+0xd6>
+ 2b0:	83 e0       	ldi	r24, 0x03	; 3
+ 2b2:	e8 16       	cp	r14, r24
+ 2b4:	f1 04       	cpc	r15, r1
+ 2b6:	51 f1       	breq	.+84     	; 0x30c <getkey+0xf0>
+ 2b8:	36 c0       	rjmp	.+108    	; 0x326 <getkey+0x10a>
+				{
+					case(Row0):
+					{
+						if      (j == Col0) return '7';
+ 2ba:	04 30       	cpi	r16, 0x04	; 4
+ 2bc:	11 05       	cpc	r17, r1
+ 2be:	09 f4       	brne	.+2      	; 0x2c2 <getkey+0xa6>
+ 2c0:	41 c0       	rjmp	.+130    	; 0x344 <getkey+0x128>
+						else if (j == Col1) return '8';
+ 2c2:	05 30       	cpi	r16, 0x05	; 5
+ 2c4:	11 05       	cpc	r17, r1
+ 2c6:	09 f4       	brne	.+2      	; 0x2ca <getkey+0xae>
+ 2c8:	3f c0       	rjmp	.+126    	; 0x348 <getkey+0x12c>
+						else if (j == Col2) return '9';
+ 2ca:	06 30       	cpi	r16, 0x06	; 6
+ 2cc:	11 05       	cpc	r17, r1
+ 2ce:	f1 f1       	breq	.+124    	; 0x34c <getkey+0x130>
+						else if (j == Col3) return '/';
+ 2d0:	07 30       	cpi	r16, 0x07	; 7
+ 2d2:	11 05       	cpc	r17, r1
+ 2d4:	41 f5       	brne	.+80     	; 0x326 <getkey+0x10a>
+ 2d6:	3c c0       	rjmp	.+120    	; 0x350 <getkey+0x134>
+						break;
+					}
+					case(Row1):
+					{
+						if      (j == Col0) return '4';
+ 2d8:	04 30       	cpi	r16, 0x04	; 4
+ 2da:	11 05       	cpc	r17, r1
+ 2dc:	d9 f1       	breq	.+118    	; 0x354 <getkey+0x138>
+						else if (j == Col1) return '5';
+ 2de:	05 30       	cpi	r16, 0x05	; 5
+ 2e0:	11 05       	cpc	r17, r1
+ 2e2:	d1 f1       	breq	.+116    	; 0x358 <getkey+0x13c>
+						else if (j == Col2) return '6';
+ 2e4:	06 30       	cpi	r16, 0x06	; 6
+ 2e6:	11 05       	cpc	r17, r1
+ 2e8:	c9 f1       	breq	.+114    	; 0x35c <getkey+0x140>
+						else if (j == Col3) return '*';
+ 2ea:	07 30       	cpi	r16, 0x07	; 7
+ 2ec:	11 05       	cpc	r17, r1
+ 2ee:	d9 f4       	brne	.+54     	; 0x326 <getkey+0x10a>
+ 2f0:	37 c0       	rjmp	.+110    	; 0x360 <getkey+0x144>
+						break;
+					}
+					case(Row2):
+					{
+						if      (j == Col0) return '1';
+ 2f2:	04 30       	cpi	r16, 0x04	; 4
+ 2f4:	11 05       	cpc	r17, r1
+ 2f6:	b1 f1       	breq	.+108    	; 0x364 <getkey+0x148>
+						else if (j == Col1) return '2';
+ 2f8:	05 30       	cpi	r16, 0x05	; 5
+ 2fa:	11 05       	cpc	r17, r1
+ 2fc:	a9 f1       	breq	.+106    	; 0x368 <getkey+0x14c>
+						else if (j == Col2) return '3';
+ 2fe:	06 30       	cpi	r16, 0x06	; 6
+ 300:	11 05       	cpc	r17, r1
+ 302:	a1 f1       	breq	.+104    	; 0x36c <getkey+0x150>
+						else if (j == Col3) return '-';
+ 304:	07 30       	cpi	r16, 0x07	; 7
+ 306:	11 05       	cpc	r17, r1
+ 308:	71 f4       	brne	.+28     	; 0x326 <getkey+0x10a>
+ 30a:	32 c0       	rjmp	.+100    	; 0x370 <getkey+0x154>
+						break;
+					}
+					case(Row3):
+					{
+						if      (j == Col0) return '?';
+ 30c:	04 30       	cpi	r16, 0x04	; 4
+ 30e:	11 05       	cpc	r17, r1
+ 310:	89 f1       	breq	.+98     	; 0x374 <getkey+0x158>
+						else if (j == Col1) return '0';
+ 312:	05 30       	cpi	r16, 0x05	; 5
+ 314:	11 05       	cpc	r17, r1
+ 316:	81 f1       	breq	.+96     	; 0x378 <getkey+0x15c>
+						else if (j == Col2) return '=';
+ 318:	06 30       	cpi	r16, 0x06	; 6
+ 31a:	11 05       	cpc	r17, r1
+ 31c:	79 f1       	breq	.+94     	; 0x37c <getkey+0x160>
+						else if (j == Col3) return '+';
+ 31e:	07 30       	cpi	r16, 0x07	; 7
+ 320:	11 05       	cpc	r17, r1
+ 322:	81 f5       	brne	.+96     	; 0x384 <getkey+0x168>
+ 324:	2d c0       	rjmp	.+90     	; 0x380 <getkey+0x164>
+		GPIO_Write(Row2,0xff);
+		GPIO_Write(Row3,0xff);
+		
+		GPIO_Write(i,0x00);
+
+		for(j = Col0 ; j <= Col3 ; j++)
+ 326:	88 e0       	ldi	r24, 0x08	; 8
+ 328:	c8 16       	cp	r12, r24
+ 32a:	d1 04       	cpc	r13, r1
+ 32c:	0c f4       	brge	.+2      	; 0x330 <getkey+0x114>
+ 32e:	9b cf       	rjmp	.-202    	; 0x266 <getkey+0x4a>
+unsigned char Data ; 
+
+unsigned char getkey()
+{
+	int i, j;
+	for(i = Row0; i <= Row3; i++)
+ 330:	8f ef       	ldi	r24, 0xFF	; 255
+ 332:	e8 1a       	sub	r14, r24
+ 334:	f8 0a       	sbc	r15, r24
+ 336:	84 e0       	ldi	r24, 0x04	; 4
+ 338:	e8 16       	cp	r14, r24
+ 33a:	f1 04       	cpc	r15, r1
+ 33c:	09 f0       	breq	.+2      	; 0x340 <getkey+0x124>
+ 33e:	77 cf       	rjmp	.-274    	; 0x22e <getkey+0x12>
+					}
+				}
+			}
+		}
+	}
+	return 'F';
+ 340:	86 e4       	ldi	r24, 0x46	; 70
+ 342:	26 c0       	rjmp	.+76     	; 0x390 <getkey+0x174>
+				while(Data==0x00) {GPIO_Read(j,&Data);}  //wait for key to be released
+				switch(i)
+				{
+					case(Row0):
+					{
+						if      (j == Col0) return '7';
+ 344:	87 e3       	ldi	r24, 0x37	; 55
+ 346:	24 c0       	rjmp	.+72     	; 0x390 <getkey+0x174>
+						else if (j == Col1) return '8';
+ 348:	88 e3       	ldi	r24, 0x38	; 56
+ 34a:	22 c0       	rjmp	.+68     	; 0x390 <getkey+0x174>
+						else if (j == Col2) return '9';
+ 34c:	89 e3       	ldi	r24, 0x39	; 57
+ 34e:	20 c0       	rjmp	.+64     	; 0x390 <getkey+0x174>
+						else if (j == Col3) return '/';
+ 350:	8f e2       	ldi	r24, 0x2F	; 47
+ 352:	1e c0       	rjmp	.+60     	; 0x390 <getkey+0x174>
+						break;
+					}
+					case(Row1):
+					{
+						if      (j == Col0) return '4';
+ 354:	84 e3       	ldi	r24, 0x34	; 52
+ 356:	1c c0       	rjmp	.+56     	; 0x390 <getkey+0x174>
+						else if (j == Col1) return '5';
+ 358:	85 e3       	ldi	r24, 0x35	; 53
+ 35a:	1a c0       	rjmp	.+52     	; 0x390 <getkey+0x174>
+						else if (j == Col2) return '6';
+ 35c:	86 e3       	ldi	r24, 0x36	; 54
+ 35e:	18 c0       	rjmp	.+48     	; 0x390 <getkey+0x174>
+						else if (j == Col3) return '*';
+ 360:	8a e2       	ldi	r24, 0x2A	; 42
+ 362:	16 c0       	rjmp	.+44     	; 0x390 <getkey+0x174>
+						break;
+					}
+					case(Row2):
+					{
+						if      (j == Col0) return '1';
+ 364:	81 e3       	ldi	r24, 0x31	; 49
+ 366:	14 c0       	rjmp	.+40     	; 0x390 <getkey+0x174>
+						else if (j == Col1) return '2';
+ 368:	82 e3       	ldi	r24, 0x32	; 50
+ 36a:	12 c0       	rjmp	.+36     	; 0x390 <getkey+0x174>
+						else if (j == Col2) return '3';
+ 36c:	83 e3       	ldi	r24, 0x33	; 51
+ 36e:	10 c0       	rjmp	.+32     	; 0x390 <getkey+0x174>
+						else if (j == Col3) return '-';
+ 370:	8d e2       	ldi	r24, 0x2D	; 45
+ 372:	0e c0       	rjmp	.+28     	; 0x390 <getkey+0x174>
+						break;
+					}
+					case(Row3):
+					{
+						if      (j == Col0) return '?';
+ 374:	8f e3       	ldi	r24, 0x3F	; 63
+ 376:	0c c0       	rjmp	.+24     	; 0x390 <getkey+0x174>
+						else if (j == Col1) return '0';
+ 378:	80 e3       	ldi	r24, 0x30	; 48
+ 37a:	0a c0       	rjmp	.+20     	; 0x390 <getkey+0x174>
+						else if (j == Col2) return '=';
+ 37c:	8d e3       	ldi	r24, 0x3D	; 61
+ 37e:	08 c0       	rjmp	.+16     	; 0x390 <getkey+0x174>
+						else if (j == Col3) return '+';
+ 380:	8b e2       	ldi	r24, 0x2B	; 43
+ 382:	06 c0       	rjmp	.+12     	; 0x390 <getkey+0x174>
+		GPIO_Write(Row2,0xff);
+		GPIO_Write(Row3,0xff);
+		
+		GPIO_Write(i,0x00);
+
+		for(j = Col0 ; j <= Col3 ; j++)
+ 384:	88 e0       	ldi	r24, 0x08	; 8
+ 386:	c8 16       	cp	r12, r24
+ 388:	d1 04       	cpc	r13, r1
+ 38a:	0c f4       	brge	.+2      	; 0x38e <getkey+0x172>
+ 38c:	6c cf       	rjmp	.-296    	; 0x266 <getkey+0x4a>
+					}
+				}
+			}
+		}
+	}
+	return 'F';
+ 38e:	86 e4       	ldi	r24, 0x46	; 70
+ 390:	cf 91       	pop	r28
+ 392:	1f 91       	pop	r17
+ 394:	0f 91       	pop	r16
+ 396:	ff 90       	pop	r15
+ 398:	ef 90       	pop	r14
+ 39a:	df 90       	pop	r13
+ 39c:	cf 90       	pop	r12
+ 39e:	08 95       	ret
+
+000003a0 <Delay>:
+GPIO_Write(EN_GROUP_IDX,0x00);
+#endif
+Delay(2000);
+	}
+void Delay(unsigned int DelayVal)
+{
+ 3a0:	cf 93       	push	r28
+ 3a2:	df 93       	push	r29
+ 3a4:	00 d0       	rcall	.+0      	; 0x3a6 <Delay+0x6>
+ 3a6:	00 d0       	rcall	.+0      	; 0x3a8 <Delay+0x8>
+ 3a8:	cd b7       	in	r28, 0x3d	; 61
+ 3aa:	de b7       	in	r29, 0x3e	; 62
+	volatile long int i;
+	for(i = 0; i < (DelayVal*4); i++);
+ 3ac:	19 82       	std	Y+1, r1	; 0x01
+ 3ae:	1a 82       	std	Y+2, r1	; 0x02
+ 3b0:	1b 82       	std	Y+3, r1	; 0x03
+ 3b2:	1c 82       	std	Y+4, r1	; 0x04
+ 3b4:	88 0f       	add	r24, r24
+ 3b6:	99 1f       	adc	r25, r25
+ 3b8:	88 0f       	add	r24, r24
+ 3ba:	99 1f       	adc	r25, r25
+ 3bc:	a0 e0       	ldi	r26, 0x00	; 0
+ 3be:	b0 e0       	ldi	r27, 0x00	; 0
+ 3c0:	49 81       	ldd	r20, Y+1	; 0x01
+ 3c2:	5a 81       	ldd	r21, Y+2	; 0x02
+ 3c4:	6b 81       	ldd	r22, Y+3	; 0x03
+ 3c6:	7c 81       	ldd	r23, Y+4	; 0x04
+ 3c8:	48 17       	cp	r20, r24
+ 3ca:	59 07       	cpc	r21, r25
+ 3cc:	6a 07       	cpc	r22, r26
+ 3ce:	7b 07       	cpc	r23, r27
+ 3d0:	ac f4       	brge	.+42     	; 0x3fc <Delay+0x5c>
+ 3d2:	49 81       	ldd	r20, Y+1	; 0x01
+ 3d4:	5a 81       	ldd	r21, Y+2	; 0x02
+ 3d6:	6b 81       	ldd	r22, Y+3	; 0x03
+ 3d8:	7c 81       	ldd	r23, Y+4	; 0x04
+ 3da:	4f 5f       	subi	r20, 0xFF	; 255
+ 3dc:	5f 4f       	sbci	r21, 0xFF	; 255
+ 3de:	6f 4f       	sbci	r22, 0xFF	; 255
+ 3e0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3e2:	49 83       	std	Y+1, r20	; 0x01
+ 3e4:	5a 83       	std	Y+2, r21	; 0x02
+ 3e6:	6b 83       	std	Y+3, r22	; 0x03
+ 3e8:	7c 83       	std	Y+4, r23	; 0x04
+ 3ea:	49 81       	ldd	r20, Y+1	; 0x01
+ 3ec:	5a 81       	ldd	r21, Y+2	; 0x02
+ 3ee:	6b 81       	ldd	r22, Y+3	; 0x03
+ 3f0:	7c 81       	ldd	r23, Y+4	; 0x04
+ 3f2:	48 17       	cp	r20, r24
+ 3f4:	59 07       	cpc	r21, r25
+ 3f6:	6a 07       	cpc	r22, r26
+ 3f8:	7b 07       	cpc	r23, r27
+ 3fa:	5c f3       	brlt	.-42     	; 0x3d2 <Delay+0x32>
+	}
+ 3fc:	0f 90       	pop	r0
+ 3fe:	0f 90       	pop	r0
+ 400:	0f 90       	pop	r0
+ 402:	0f 90       	pop	r0
+ 404:	df 91       	pop	r29
+ 406:	cf 91       	pop	r28
+ 408:	08 95       	ret
+
+0000040a <SendCmd>:
+	RetVar=LCD_OK;
+   }else {RetVar=LCD_NOK;}
+  return RetVar ; 
+}
+static void SendCmd(unsigned char CmdId)
+{
+ 40a:	cf 92       	push	r12
+ 40c:	df 92       	push	r13
+ 40e:	ef 92       	push	r14
+ 410:	ff 92       	push	r15
+ 412:	0f 93       	push	r16
+ 414:	1f 93       	push	r17
+ 416:	cf 93       	push	r28
+ 418:	df 93       	push	r29
+ 41a:	c8 2f       	mov	r28, r24
+	int i;
+	unsigned char GpioData,Cmd1;
+GPIO_Write(RS_GROUP_IDX,0x00);
+ 41c:	60 e0       	ldi	r22, 0x00	; 0
+ 41e:	88 e0       	ldi	r24, 0x08	; 8
+ 420:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+GPIO_Write(RW_GROUP_IDX,0x00);
+ 424:	60 e0       	ldi	r22, 0x00	; 0
+ 426:	89 e0       	ldi	r24, 0x09	; 9
+ 428:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	}
+    GPIO_Write(EN_GROUP_IDX,0xff);
+    Delay(100);
+    GPIO_Write(EN_GROUP_IDX,0x00);
+#else
+Cmd1 = (CmdId & 0xF0) >> 4;
+ 42c:	dc 2f       	mov	r29, r28
+ 42e:	d2 95       	swap	r29
+ 430:	df 70       	andi	r29, 0x0F	; 15
+ 432:	08 ea       	ldi	r16, 0xA8	; 168
+ 434:	10 e0       	ldi	r17, 0x00	; 0
+ 436:	0f 2e       	mov	r0, r31
+ 438:	fc ea       	ldi	r31, 0xAC	; 172
+ 43a:	ef 2e       	mov	r14, r31
+ 43c:	f0 e0       	ldi	r31, 0x00	; 0
+ 43e:	ff 2e       	mov	r15, r31
+ 440:	f0 2d       	mov	r31, r0
+ 442:	68 01       	movw	r12, r16
+for(i = 0; i < 4; i++)
+{
+    GpioData = Cmd1 & 0x01;
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+ 444:	6d 2f       	mov	r22, r29
+ 446:	61 70       	andi	r22, 0x01	; 1
+ 448:	61 95       	neg	r22
+ 44a:	d6 95       	lsr	r29
+ 44c:	f6 01       	movw	r30, r12
+ 44e:	81 91       	ld	r24, Z+
+ 450:	6f 01       	movw	r12, r30
+ 452:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+    GPIO_Write(EN_GROUP_IDX,0xff);
+    Delay(100);
+    GPIO_Write(EN_GROUP_IDX,0x00);
+#else
+Cmd1 = (CmdId & 0xF0) >> 4;
+for(i = 0; i < 4; i++)
+ 456:	ec 14       	cp	r14, r12
+ 458:	fd 04       	cpc	r15, r13
+ 45a:	a1 f7       	brne	.-24     	; 0x444 <SendCmd+0x3a>
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+ 45c:	6f ef       	ldi	r22, 0xFF	; 255
+ 45e:	8a e0       	ldi	r24, 0x0A	; 10
+ 460:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Delay(100);
+ 464:	84 e6       	ldi	r24, 0x64	; 100
+ 466:	90 e0       	ldi	r25, 0x00	; 0
+ 468:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+GPIO_Write(EN_GROUP_IDX,0x00);
+ 46c:	60 e0       	ldi	r22, 0x00	; 0
+ 46e:	8a e0       	ldi	r24, 0x0A	; 10
+ 470:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Cmd1 = (CmdId & 0x0f);
+ 474:	cf 70       	andi	r28, 0x0F	; 15
+for(i = 0; i < 4; i++)
+{
+    GpioData = Cmd1 & 0x01;
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+ 476:	6c 2f       	mov	r22, r28
+ 478:	61 70       	andi	r22, 0x01	; 1
+ 47a:	61 95       	neg	r22
+ 47c:	c6 95       	lsr	r28
+ 47e:	f8 01       	movw	r30, r16
+ 480:	81 91       	ld	r24, Z+
+ 482:	8f 01       	movw	r16, r30
+ 484:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+Delay(100);
+GPIO_Write(EN_GROUP_IDX,0x00);
+Cmd1 = (CmdId & 0x0f);
+for(i = 0; i < 4; i++)
+ 488:	0e 15       	cp	r16, r14
+ 48a:	1f 05       	cpc	r17, r15
+ 48c:	a1 f7       	brne	.-24     	; 0x476 <SendCmd+0x6c>
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+ 48e:	6f ef       	ldi	r22, 0xFF	; 255
+ 490:	8a e0       	ldi	r24, 0x0A	; 10
+ 492:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Delay(100);
+ 496:	84 e6       	ldi	r24, 0x64	; 100
+ 498:	90 e0       	ldi	r25, 0x00	; 0
+ 49a:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+GPIO_Write(EN_GROUP_IDX,0x00);
+ 49e:	60 e0       	ldi	r22, 0x00	; 0
+ 4a0:	8a e0       	ldi	r24, 0x0A	; 10
+ 4a2:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+#endif
+Delay(2000);
+ 4a6:	80 ed       	ldi	r24, 0xD0	; 208
+ 4a8:	97 e0       	ldi	r25, 0x07	; 7
+ 4aa:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+	}
+ 4ae:	df 91       	pop	r29
+ 4b0:	cf 91       	pop	r28
+ 4b2:	1f 91       	pop	r17
+ 4b4:	0f 91       	pop	r16
+ 4b6:	ff 90       	pop	r15
+ 4b8:	ef 90       	pop	r14
+ 4ba:	df 90       	pop	r13
+ 4bc:	cf 90       	pop	r12
+ 4be:	08 95       	ret
+
+000004c0 <LCD_SetCursPos>:
+}
+
+LCD_ChkType LCD_SetCursPos(int x,int y)
+{
+	LCD_ChkType RetVar ;
+  if(InitState == 1)
+ 4c0:	20 91 0b 01 	lds	r18, 0x010B	; 0x80010b <InitState>
+ 4c4:	30 91 0c 01 	lds	r19, 0x010C	; 0x80010c <InitState+0x1>
+ 4c8:	21 30       	cpi	r18, 0x01	; 1
+ 4ca:	31 05       	cpc	r19, r1
+ 4cc:	61 f4       	brne	.+24     	; 0x4e6 <LCD_SetCursPos+0x26>
+  {
+	if(y == 0)
+ 4ce:	67 2b       	or	r22, r23
+ 4d0:	29 f4       	brne	.+10     	; 0x4dc <LCD_SetCursPos+0x1c>
+	{
+		SendCmd(0x80 + x);
+ 4d2:	80 58       	subi	r24, 0x80	; 128
+ 4d4:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+	}
+	else
+	{
+		SendCmd(0xC0 + x);
+	}
+	RetVar=LCD_OK ;
+ 4d8:	80 e0       	ldi	r24, 0x00	; 0
+ 4da:	08 95       	ret
+	{
+		SendCmd(0x80 + x);
+	}
+	else
+	{
+		SendCmd(0xC0 + x);
+ 4dc:	80 54       	subi	r24, 0x40	; 64
+ 4de:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+	}
+	RetVar=LCD_OK ;
+ 4e2:	80 e0       	ldi	r24, 0x00	; 0
+ 4e4:	08 95       	ret
+	
+  }else {RetVar=LCD_NOK;}
+ 4e6:	81 e0       	ldi	r24, 0x01	; 1
+	return RetVar ; 
+}
+ 4e8:	08 95       	ret
+
+000004ea <LCD_Clear>:
+LCD_ChkType LCD_Clear(void)
+{
+	LCD_ChkType RetVar ;
+  if(InitState == 1)
+ 4ea:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <InitState>
+ 4ee:	90 91 0c 01 	lds	r25, 0x010C	; 0x80010c <InitState+0x1>
+ 4f2:	01 97       	sbiw	r24, 0x01	; 1
+ 4f4:	29 f4       	brne	.+10     	; 0x500 <LCD_Clear+0x16>
+  {
+	SendCmd(0x01);
+ 4f6:	81 e0       	ldi	r24, 0x01	; 1
+ 4f8:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+	RetVar=LCD_OK;
+ 4fc:	80 e0       	ldi	r24, 0x00	; 0
+ 4fe:	08 95       	ret
+	}else {RetVar=LCD_NOK;}
+ 500:	81 e0       	ldi	r24, 0x01	; 1
+  return RetVar ; 
+}
+ 502:	08 95       	ret
+
+00000504 <LCD_Init>:
+		                       DB6_GROUP_IDX,DB7_GROUP_IDX};
+#endif
+static int InitState = 0;
+void LCD_Init(void)
+{
+  Delay(15000);
+ 504:	88 e9       	ldi	r24, 0x98	; 152
+ 506:	9a e3       	ldi	r25, 0x3A	; 58
+ 508:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+#if DATA_MODE == DATA_MODE_4
+  SendCmd(0x33);
+ 50c:	83 e3       	ldi	r24, 0x33	; 51
+ 50e:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+  SendCmd(0x32);
+ 512:	82 e3       	ldi	r24, 0x32	; 50
+ 514:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+  SendCmd(0x28);
+ 518:	88 e2       	ldi	r24, 0x28	; 40
+ 51a:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+#else
+  SendCmd(0x38);
+#endif
+
+#if CURSOR_MODE == CURSOR_OFF
+  SendCmd(0x0C);
+ 51e:	8c e0       	ldi	r24, 0x0C	; 12
+ 520:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+#else
+  SendCmd(0x0E);
+#endif
+  SendCmd(0x01);
+ 524:	81 e0       	ldi	r24, 0x01	; 1
+ 526:	0e 94 05 02 	call	0x40a	; 0x40a <SendCmd>
+  InitState = 1;
+ 52a:	81 e0       	ldi	r24, 0x01	; 1
+ 52c:	90 e0       	ldi	r25, 0x00	; 0
+ 52e:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <InitState+0x1>
+ 532:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <InitState>
+ 536:	08 95       	ret
+
+00000538 <SendData>:
+	volatile long int i;
+	for(i = 0; i < (DelayVal*4); i++);
+	}
+
+static void SendData(unsigned char DataId)
+{
+ 538:	cf 92       	push	r12
+ 53a:	df 92       	push	r13
+ 53c:	ef 92       	push	r14
+ 53e:	ff 92       	push	r15
+ 540:	0f 93       	push	r16
+ 542:	1f 93       	push	r17
+ 544:	cf 93       	push	r28
+ 546:	df 93       	push	r29
+ 548:	c8 2f       	mov	r28, r24
+	int i;
+	unsigned char GpioData,Cmd1;
+GPIO_Write(RS_GROUP_IDX,0xff);
+ 54a:	6f ef       	ldi	r22, 0xFF	; 255
+ 54c:	88 e0       	ldi	r24, 0x08	; 8
+ 54e:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+GPIO_Write(RW_GROUP_IDX,0x00);
+ 552:	60 e0       	ldi	r22, 0x00	; 0
+ 554:	89 e0       	ldi	r24, 0x09	; 9
+ 556:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	}
+    GPIO_Write(EN_GROUP_IDX,0xff);
+    Delay(100);
+    GPIO_Write(EN_GROUP_IDX,0x00);
+#else
+Cmd1 = (DataId & 0xF0) >> 4;
+ 55a:	dc 2f       	mov	r29, r28
+ 55c:	d2 95       	swap	r29
+ 55e:	df 70       	andi	r29, 0x0F	; 15
+ 560:	08 ea       	ldi	r16, 0xA8	; 168
+ 562:	10 e0       	ldi	r17, 0x00	; 0
+ 564:	0f 2e       	mov	r0, r31
+ 566:	fc ea       	ldi	r31, 0xAC	; 172
+ 568:	ef 2e       	mov	r14, r31
+ 56a:	f0 e0       	ldi	r31, 0x00	; 0
+ 56c:	ff 2e       	mov	r15, r31
+ 56e:	f0 2d       	mov	r31, r0
+ 570:	68 01       	movw	r12, r16
+for(i = 0; i < 4; i++)
+{
+    GpioData = Cmd1 & 0x01;
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+ 572:	6d 2f       	mov	r22, r29
+ 574:	61 70       	andi	r22, 0x01	; 1
+ 576:	61 95       	neg	r22
+ 578:	d6 95       	lsr	r29
+ 57a:	f6 01       	movw	r30, r12
+ 57c:	81 91       	ld	r24, Z+
+ 57e:	6f 01       	movw	r12, r30
+ 580:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+    GPIO_Write(EN_GROUP_IDX,0xff);
+    Delay(100);
+    GPIO_Write(EN_GROUP_IDX,0x00);
+#else
+Cmd1 = (DataId & 0xF0) >> 4;
+for(i = 0; i < 4; i++)
+ 584:	ec 14       	cp	r14, r12
+ 586:	fd 04       	cpc	r15, r13
+ 588:	a1 f7       	brne	.-24     	; 0x572 <SendData+0x3a>
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+ 58a:	6f ef       	ldi	r22, 0xFF	; 255
+ 58c:	8a e0       	ldi	r24, 0x0A	; 10
+ 58e:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Delay(100);
+ 592:	84 e6       	ldi	r24, 0x64	; 100
+ 594:	90 e0       	ldi	r25, 0x00	; 0
+ 596:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+GPIO_Write(EN_GROUP_IDX,0x00);
+ 59a:	60 e0       	ldi	r22, 0x00	; 0
+ 59c:	8a e0       	ldi	r24, 0x0A	; 10
+ 59e:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Cmd1 = (DataId & 0x0f);
+ 5a2:	cf 70       	andi	r28, 0x0F	; 15
+for(i = 0; i < 4; i++)
+{
+    GpioData = Cmd1 & 0x01;
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+ 5a4:	6c 2f       	mov	r22, r28
+ 5a6:	61 70       	andi	r22, 0x01	; 1
+ 5a8:	61 95       	neg	r22
+ 5aa:	c6 95       	lsr	r28
+ 5ac:	f8 01       	movw	r30, r16
+ 5ae:	81 91       	ld	r24, Z+
+ 5b0:	8f 01       	movw	r16, r30
+ 5b2:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+Delay(100);
+GPIO_Write(EN_GROUP_IDX,0x00);
+Cmd1 = (DataId & 0x0f);
+for(i = 0; i < 4; i++)
+ 5b6:	0e 15       	cp	r16, r14
+ 5b8:	1f 05       	cpc	r17, r15
+ 5ba:	a1 f7       	brne	.-24     	; 0x5a4 <SendData+0x6c>
+    GpioData = (~GpioData) + 1;
+    Cmd1 = Cmd1 >> 1;
+    GPIO_Write(DataPinsIdx[i],GpioData);
+
+	}
+GPIO_Write(EN_GROUP_IDX,0xff);
+ 5bc:	6f ef       	ldi	r22, 0xFF	; 255
+ 5be:	8a e0       	ldi	r24, 0x0A	; 10
+ 5c0:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+Delay(100);
+ 5c4:	84 e6       	ldi	r24, 0x64	; 100
+ 5c6:	90 e0       	ldi	r25, 0x00	; 0
+ 5c8:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+GPIO_Write(EN_GROUP_IDX,0x00);
+ 5cc:	60 e0       	ldi	r22, 0x00	; 0
+ 5ce:	8a e0       	ldi	r24, 0x0A	; 10
+ 5d0:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+#endif
+Delay(10);
+ 5d4:	8a e0       	ldi	r24, 0x0A	; 10
+ 5d6:	90 e0       	ldi	r25, 0x00	; 0
+ 5d8:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+	}
+ 5dc:	df 91       	pop	r29
+ 5de:	cf 91       	pop	r28
+ 5e0:	1f 91       	pop	r17
+ 5e2:	0f 91       	pop	r16
+ 5e4:	ff 90       	pop	r15
+ 5e6:	ef 90       	pop	r14
+ 5e8:	df 90       	pop	r13
+ 5ea:	cf 90       	pop	r12
+ 5ec:	08 95       	ret
+
+000005ee <LCD_DispChar>:
+  InitState = 1;
+	}
+LCD_ChkType LCD_DispChar(char Data)
+{
+	LCD_ChkType RetVar;
+	if(InitState == 1)
+ 5ee:	20 91 0b 01 	lds	r18, 0x010B	; 0x80010b <InitState>
+ 5f2:	30 91 0c 01 	lds	r19, 0x010C	; 0x80010c <InitState+0x1>
+ 5f6:	21 30       	cpi	r18, 0x01	; 1
+ 5f8:	31 05       	cpc	r19, r1
+ 5fa:	21 f4       	brne	.+8      	; 0x604 <LCD_DispChar+0x16>
+	{
+	SendData(Data);
+ 5fc:	0e 94 9c 02 	call	0x538	; 0x538 <SendData>
+	RetVar = LCD_OK;
+ 600:	80 e0       	ldi	r24, 0x00	; 0
+ 602:	08 95       	ret
+	}
+	else
+	{
+	RetVar = LCD_NOK;
+ 604:	81 e0       	ldi	r24, 0x01	; 1
+	}
+	return RetVar;
+}
+ 606:	08 95       	ret
+
+00000608 <LCD_DispString>:
+	RetVar=LCD_OK;
+	}else {RetVar=LCD_NOK;}
+  return RetVar ; 
+}
+LCD_ChkType LCD_DispString(char* StrPtr)
+{
+ 608:	cf 93       	push	r28
+ 60a:	df 93       	push	r29
+ 60c:	ec 01       	movw	r28, r24
+	LCD_ChkType RetVar ;
+  if(InitState == 1)
+ 60e:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <InitState>
+ 612:	90 91 0c 01 	lds	r25, 0x010C	; 0x80010c <InitState+0x1>
+ 616:	01 97       	sbiw	r24, 0x01	; 1
+ 618:	51 f4       	brne	.+20     	; 0x62e <LCD_DispString+0x26>
+  {
+	while((*StrPtr) != '\0')
+ 61a:	88 81       	ld	r24, Y
+ 61c:	88 23       	and	r24, r24
+ 61e:	49 f0       	breq	.+18     	; 0x632 <LCD_DispString+0x2a>
+ 620:	21 96       	adiw	r28, 0x01	; 1
+	{
+		SendData(*StrPtr);
+ 622:	0e 94 9c 02 	call	0x538	; 0x538 <SendData>
+LCD_ChkType LCD_DispString(char* StrPtr)
+{
+	LCD_ChkType RetVar ;
+  if(InitState == 1)
+  {
+	while((*StrPtr) != '\0')
+ 626:	89 91       	ld	r24, Y+
+ 628:	81 11       	cpse	r24, r1
+ 62a:	fb cf       	rjmp	.-10     	; 0x622 <LCD_DispString+0x1a>
+ 62c:	03 c0       	rjmp	.+6      	; 0x634 <LCD_DispString+0x2c>
+		SendData(*StrPtr);
+		StrPtr ++;
+	}
+	
+	RetVar=LCD_OK;
+   }else {RetVar=LCD_NOK;}
+ 62e:	81 e0       	ldi	r24, 0x01	; 1
+ 630:	01 c0       	rjmp	.+2      	; 0x634 <LCD_DispString+0x2c>
+	{
+		SendData(*StrPtr);
+		StrPtr ++;
+	}
+	
+	RetVar=LCD_OK;
+ 632:	80 e0       	ldi	r24, 0x00	; 0
+   }else {RetVar=LCD_NOK;}
+  return RetVar ; 
+}
+ 634:	df 91       	pop	r29
+ 636:	cf 91       	pop	r28
+ 638:	08 95       	ret
+
+0000063a <main>:
+#include "eeprom.h"
+#include "interrupt.h"
+#include "avr/interrupt.h"
+
+int main(void)
+{
+ 63a:	cf 93       	push	r28
+ 63c:	df 93       	push	r29
+ 63e:	00 d0       	rcall	.+0      	; 0x640 <main+0x6>
+ 640:	00 d0       	rcall	.+0      	; 0x642 <main+0x8>
+ 642:	cd b7       	in	r28, 0x3d	; 61
+ 644:	de b7       	in	r29, 0x3e	; 62
+	GPIO_Init();
+ 646:	0e 94 58 00 	call	0xb0	; 0xb0 <GPIO_Init>
+	LCD_Init();
+ 64a:	0e 94 82 02 	call	0x504	; 0x504 <LCD_Init>
+	interrupt_Init();
+ 64e:	0e 94 08 01 	call	0x210	; 0x210 <interrupt_Init>
+	sei() ;
+ 652:	78 94       	sei
+	unsigned char error= 0;
+	EEPROM_write(10,error);
+ 654:	60 e0       	ldi	r22, 0x00	; 0
+ 656:	8a e0       	ldi	r24, 0x0A	; 10
+ 658:	90 e0       	ldi	r25, 0x00	; 0
+ 65a:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+	int i ;
+	unsigned char Password[4] = {'0','1','2','3'};
+ 65e:	80 e3       	ldi	r24, 0x30	; 48
+ 660:	89 83       	std	Y+1, r24	; 0x01
+ 662:	81 e3       	ldi	r24, 0x31	; 49
+ 664:	8a 83       	std	Y+2, r24	; 0x02
+ 666:	82 e3       	ldi	r24, 0x32	; 50
+ 668:	8b 83       	std	Y+3, r24	; 0x03
+ 66a:	83 e3       	ldi	r24, 0x33	; 51
+ 66c:	8c 83       	std	Y+4, r24	; 0x04
+ 66e:	ce 01       	movw	r24, r28
+ 670:	01 96       	adiw	r24, 0x01	; 1
+ 672:	7c 01       	movw	r14, r24
+		for (i=0; i < 4; i++)
+ 674:	00 e0       	ldi	r16, 0x00	; 0
+ 676:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		EEPROM_write(i,Password[i]);
+ 678:	f7 01       	movw	r30, r14
+ 67a:	61 91       	ld	r22, Z+
+ 67c:	7f 01       	movw	r14, r30
+ 67e:	c8 01       	movw	r24, r16
+ 680:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+	sei() ;
+	unsigned char error= 0;
+	EEPROM_write(10,error);
+	int i ;
+	unsigned char Password[4] = {'0','1','2','3'};
+		for (i=0; i < 4; i++)
+ 684:	0f 5f       	subi	r16, 0xFF	; 255
+ 686:	1f 4f       	sbci	r17, 0xFF	; 255
+ 688:	04 30       	cpi	r16, 0x04	; 4
+ 68a:	11 05       	cpc	r17, r1
+ 68c:	a9 f7       	brne	.-22     	; 0x678 <main+0x3e>
+	}
+	uint8_t  Matched = 0 ;
+	uint8_t try = 0 ; 
+	uint8_t Flag = 0 ;
+	unsigned char KeyPad_Com ;
+	GPIO_Write(15,0x00);
+ 68e:	60 e0       	ldi	r22, 0x00	; 0
+ 690:	8f e0       	ldi	r24, 0x0F	; 15
+ 692:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	LCD_SetCursPos(0,0);
+ 696:	60 e0       	ldi	r22, 0x00	; 0
+ 698:	70 e0       	ldi	r23, 0x00	; 0
+ 69a:	80 e0       	ldi	r24, 0x00	; 0
+ 69c:	90 e0       	ldi	r25, 0x00	; 0
+ 69e:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+	LCD_DispString("Enter Password");
+ 6a2:	8c ea       	ldi	r24, 0xAC	; 172
+ 6a4:	90 e0       	ldi	r25, 0x00	; 0
+ 6a6:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+	{
+		EEPROM_write(i,Password[i]);
+	}
+	uint8_t  Matched = 0 ;
+	uint8_t try = 0 ; 
+	uint8_t Flag = 0 ;
+ 6aa:	00 e0       	ldi	r16, 0x00	; 0
+		for (i=0; i < 4; i++)
+	{
+		EEPROM_write(i,Password[i]);
+	}
+	uint8_t  Matched = 0 ;
+	uint8_t try = 0 ; 
+ 6ac:	d1 2c       	mov	r13, r1
+	unsigned char Password[4] = {'0','1','2','3'};
+		for (i=0; i < 4; i++)
+	{
+		EEPROM_write(i,Password[i]);
+	}
+	uint8_t  Matched = 0 ;
+ 6ae:	a1 2c       	mov	r10, r1
+    { if (Flag == 0)
+		{
+	  LCD_Clear();
+      LCD_SetCursPos(0,0);
+      LCD_DispString("Blocked Password");
+	  Flag=1;
+ 6b0:	bb 24       	eor	r11, r11
+ 6b2:	b3 94       	inc	r11
+	while(1)
+	{
+		error =EEPROM_read(10);
+		if (error < 3)
+		{
+			Flag = 0; 
+ 6b4:	c1 2c       	mov	r12, r1
+ 6b6:	04 c0       	rjmp	.+8      	; 0x6c0 <main+0x86>
+ 6b8:	0c 2d       	mov	r16, r12
+ 6ba:	02 c0       	rjmp	.+4      	; 0x6c0 <main+0x86>
+ 	
+       	if ( KeyPad_Com == Password[try] )
+	       {
+	     	Matched++;
+	        }
+	          try++;
+ 6bc:	d8 2e       	mov	r13, r24
+	while(1)
+	{
+		error =EEPROM_read(10);
+		if (error < 3)
+		{
+			Flag = 0; 
+ 6be:	0c 2d       	mov	r16, r12
+	LCD_SetCursPos(0,0);
+	LCD_DispString("Enter Password");
+	
+	while(1)
+	{
+		error =EEPROM_read(10);
+ 6c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 6c2:	90 e0       	ldi	r25, 0x00	; 0
+ 6c4:	0e 94 51 00 	call	0xa2	; 0xa2 <EEPROM_read>
+ 6c8:	18 2f       	mov	r17, r24
+		if (error < 3)
+ 6ca:	83 30       	cpi	r24, 0x03	; 3
+ 6cc:	08 f0       	brcs	.+2      	; 0x6d0 <main+0x96>
+ 6ce:	5a c0       	rjmp	.+180    	; 0x784 <main+0x14a>
+		{
+			Flag = 0; 
+           KeyPad_Com = getkey();
+ 6d0:	0e 94 0e 01 	call	0x21c	; 0x21c <getkey>
+ 6d4:	08 2f       	mov	r16, r24
+            if (KeyPad_Com !='F')
+ 6d6:	86 34       	cpi	r24, 0x46	; 70
+ 6d8:	79 f3       	breq	.-34     	; 0x6b8 <main+0x7e>
+            {
+	
+         	LCD_SetCursPos(try,1);
+ 6da:	ed 2c       	mov	r14, r13
+ 6dc:	f1 2c       	mov	r15, r1
+ 6de:	61 e0       	ldi	r22, 0x01	; 1
+ 6e0:	70 e0       	ldi	r23, 0x00	; 0
+ 6e2:	c7 01       	movw	r24, r14
+ 6e4:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+	        LCD_DispChar(KeyPad_Com);
+ 6e8:	80 2f       	mov	r24, r16
+ 6ea:	0e 94 f7 02 	call	0x5ee	; 0x5ee <LCD_DispChar>
+ 	
+       	if ( KeyPad_Com == Password[try] )
+ 6ee:	e1 e0       	ldi	r30, 0x01	; 1
+ 6f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 6f2:	ec 0f       	add	r30, r28
+ 6f4:	fd 1f       	adc	r31, r29
+ 6f6:	ee 0d       	add	r30, r14
+ 6f8:	ff 1d       	adc	r31, r15
+ 6fa:	80 81       	ld	r24, Z
+ 6fc:	08 13       	cpse	r16, r24
+ 6fe:	01 c0       	rjmp	.+2      	; 0x702 <main+0xc8>
+	       {
+	     	Matched++;
+ 700:	a3 94       	inc	r10
+	        }
+	          try++;
+ 702:	81 e0       	ldi	r24, 0x01	; 1
+ 704:	8d 0d       	add	r24, r13
+	
+	  if(KeyPad_Com=='=')
+ 706:	0d 33       	cpi	r16, 0x3D	; 61
+ 708:	c9 f6       	brne	.-78     	; 0x6bc <main+0x82>
+    {
+		if((try == 5)&&(--try==Matched))
+ 70a:	85 30       	cpi	r24, 0x05	; 5
+ 70c:	a9 f4       	brne	.+42     	; 0x738 <main+0xfe>
+ 70e:	ad 10       	cpse	r10, r13
+ 710:	13 c0       	rjmp	.+38     	; 0x738 <main+0xfe>
+		{
+			LCD_Clear();
+ 712:	0e 94 75 02 	call	0x4ea	; 0x4ea <LCD_Clear>
+			LCD_SetCursPos(0,0);
+ 716:	60 e0       	ldi	r22, 0x00	; 0
+ 718:	70 e0       	ldi	r23, 0x00	; 0
+ 71a:	80 e0       	ldi	r24, 0x00	; 0
+ 71c:	90 e0       	ldi	r25, 0x00	; 0
+ 71e:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+			LCD_DispString("Right Password");
+ 722:	8b eb       	ldi	r24, 0xBB	; 187
+ 724:	90 e0       	ldi	r25, 0x00	; 0
+ 726:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+			GPIO_Write(15,0xff);
+ 72a:	6f ef       	ldi	r22, 0xFF	; 255
+ 72c:	8f e0       	ldi	r24, 0x0F	; 15
+ 72e:	0e 94 94 00 	call	0x128	; 0x128 <GPIO_Write>
+	        }
+	          try++;
+	
+	  if(KeyPad_Com=='=')
+    {
+		if((try == 5)&&(--try==Matched))
+ 732:	da 2c       	mov	r13, r10
+	while(1)
+	{
+		error =EEPROM_read(10);
+		if (error < 3)
+		{
+			Flag = 0; 
+ 734:	0c 2d       	mov	r16, r12
+		if((try == 5)&&(--try==Matched))
+		{
+			LCD_Clear();
+			LCD_SetCursPos(0,0);
+			LCD_DispString("Right Password");
+			GPIO_Write(15,0xff);
+ 736:	c4 cf       	rjmp	.-120    	; 0x6c0 <main+0x86>
+		}else
+		{
+			LCD_Clear();
+ 738:	0e 94 75 02 	call	0x4ea	; 0x4ea <LCD_Clear>
+			LCD_SetCursPos(0,0);
+ 73c:	60 e0       	ldi	r22, 0x00	; 0
+ 73e:	70 e0       	ldi	r23, 0x00	; 0
+ 740:	80 e0       	ldi	r24, 0x00	; 0
+ 742:	90 e0       	ldi	r25, 0x00	; 0
+ 744:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+			LCD_DispString("Wrong Password");
+ 748:	8a ec       	ldi	r24, 0xCA	; 202
+ 74a:	90 e0       	ldi	r25, 0x00	; 0
+ 74c:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+			try = 0 ;
+			Matched = 0;
+			error++ ;
+			EEPROM_write(10,error);
+ 750:	61 e0       	ldi	r22, 0x01	; 1
+ 752:	61 0f       	add	r22, r17
+ 754:	8a e0       	ldi	r24, 0x0A	; 10
+ 756:	90 e0       	ldi	r25, 0x00	; 0
+ 758:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+			Delay(80000000);
+ 75c:	80 e0       	ldi	r24, 0x00	; 0
+ 75e:	94 eb       	ldi	r25, 0xB4	; 180
+ 760:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+			LCD_Clear();
+ 764:	0e 94 75 02 	call	0x4ea	; 0x4ea <LCD_Clear>
+			LCD_SetCursPos(0,0);
+ 768:	60 e0       	ldi	r22, 0x00	; 0
+ 76a:	70 e0       	ldi	r23, 0x00	; 0
+ 76c:	80 e0       	ldi	r24, 0x00	; 0
+ 76e:	90 e0       	ldi	r25, 0x00	; 0
+ 770:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+			LCD_DispString("Enter Password");
+ 774:	8c ea       	ldi	r24, 0xAC	; 172
+ 776:	90 e0       	ldi	r25, 0x00	; 0
+ 778:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+	while(1)
+	{
+		error =EEPROM_read(10);
+		if (error < 3)
+		{
+			Flag = 0; 
+ 77c:	0c 2d       	mov	r16, r12
+		}else
+		{
+			LCD_Clear();
+			LCD_SetCursPos(0,0);
+			LCD_DispString("Wrong Password");
+			try = 0 ;
+ 77e:	dc 2c       	mov	r13, r12
+			Matched = 0;
+ 780:	a1 2c       	mov	r10, r1
+ 782:	9e cf       	rjmp	.-196    	; 0x6c0 <main+0x86>
+			LCD_DispString("Enter Password");
+	  }
+    }
+   }	
+  }else	
+    { if (Flag == 0)
+ 784:	01 11       	cpse	r16, r1
+ 786:	9c cf       	rjmp	.-200    	; 0x6c0 <main+0x86>
+		{
+	  LCD_Clear();
+ 788:	0e 94 75 02 	call	0x4ea	; 0x4ea <LCD_Clear>
+      LCD_SetCursPos(0,0);
+ 78c:	60 e0       	ldi	r22, 0x00	; 0
+ 78e:	70 e0       	ldi	r23, 0x00	; 0
+ 790:	80 e0       	ldi	r24, 0x00	; 0
+ 792:	90 e0       	ldi	r25, 0x00	; 0
+ 794:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+      LCD_DispString("Blocked Password");
+ 798:	89 ed       	ldi	r24, 0xD9	; 217
+ 79a:	90 e0       	ldi	r25, 0x00	; 0
+ 79c:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+	  Flag=1;
+ 7a0:	0b 2d       	mov	r16, r11
+ 7a2:	8e cf       	rjmp	.-228    	; 0x6c0 <main+0x86>
+
+000007a4 <__vector_1>:
+ }
+	return 0;
+}
+
+ISR(INT0_vect)
+{
+ 7a4:	1f 92       	push	r1
+ 7a6:	0f 92       	push	r0
+ 7a8:	0f b6       	in	r0, 0x3f	; 63
+ 7aa:	0f 92       	push	r0
+ 7ac:	11 24       	eor	r1, r1
+	LCD_Clear();
+ 7ae:	0e 94 75 02 	call	0x4ea	; 0x4ea <LCD_Clear>
+	LCD_SetCursPos(0,0);
+ 7b2:	60 e0       	ldi	r22, 0x00	; 0
+ 7b4:	70 e0       	ldi	r23, 0x00	; 0
+ 7b6:	80 e0       	ldi	r24, 0x00	; 0
+ 7b8:	90 e0       	ldi	r25, 0x00	; 0
+ 7ba:	0e 94 60 02 	call	0x4c0	; 0x4c0 <LCD_SetCursPos>
+	LCD_DispString("System Reseted");
+ 7be:	8a ee       	ldi	r24, 0xEA	; 234
+ 7c0:	90 e0       	ldi	r25, 0x00	; 0
+ 7c2:	0e 94 04 03 	call	0x608	; 0x608 <LCD_DispString>
+	EEPROM_write(10,0);
+ 7c6:	60 e0       	ldi	r22, 0x00	; 0
+ 7c8:	8a e0       	ldi	r24, 0x0A	; 10
+ 7ca:	90 e0       	ldi	r25, 0x00	; 0
+ 7cc:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_write>
+	Delay(80000000);
+ 7d0:	80 e0       	ldi	r24, 0x00	; 0
+ 7d2:	94 eb       	ldi	r25, 0xB4	; 180
+ 7d4:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <Delay>
+	main();
+ 7d8:	0e 94 1d 03 	call	0x63a	; 0x63a <main>
+
+000007dc <_exit>:
+ 7dc:	f8 94       	cli
+
+000007de <__stop_program>:
+ 7de:	ff cf       	rjmp	.-2      	; 0x7de <__stop_program>
